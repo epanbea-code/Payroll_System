@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payroll System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="splash"><img src="pictures/logo.jpg" alt="Company Logo" onerror="this.style.display='none'"></div>
+<header>
+  <img src="pictures/logo.jpg" alt="Company Logo" class="logo" onerror="this.style.display='none'">
+  <h1>I-TECH</h1>
+</header>
+
+<main>
+  <!-- HOME: two choices -->
+  <section id="home" class="view">
+    <h2>Welcome! Choose an option</h2>
+    <div class="choices">
+      <button class="big" onclick="show('login')">🔒<br>Account</button>
+      <button class="big alt" onclick="openAtt()">🕘<br>Attendance</button>
+    </div>
+  </section>
+
+  <!-- ATTENDANCE KIOSK -->
+  <section id="att" class="view" hidden>
+    <button class="back" onclick="show('home')">← Back</button>
+    <div class="card center">
+      <div id="clock" class="clock"></div>
+      <div id="date" class="date"></div>
+      <input id="code" placeholder="Enter your employee code" autocomplete="off"
+             onkeydown="if(event.key==='Enter')punch()">
+      <button onclick="punch()">TIME IN / TIME OUT</button>
+      <div id="msg" class="msg"></div>
+      <h3>Today's logs</h3>
+      <div id="todayLogs"></div>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section id="login" class="view" hidden>
+    <button class="back" onclick="show('home')">← Back</button>
+    <form class="card center" onsubmit="login(event)">
+      <h2>Log In</h2>
+      <input id="user" placeholder="Username / Employee code" required>
+      <input id="pass" type="password" placeholder="Password" required>
+      <button>Log In</button>
+      <p id="err" class="err"></p>
+    </form>
+  </section>
+
+  <!-- DASHBOARDS (employee / HR / admin) -->
+  <section id="dash" class="view" hidden></section>
+</main>
+<script src="java.js"></script>
+</body>
+</html>
